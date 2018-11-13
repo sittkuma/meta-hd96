@@ -11,13 +11,12 @@
 - modify meta-atmel/conf/machine/sama5d27-som1-ek-sd.conf
   $ bitbake u-boot-at91 -c deploy -f
   $ bitbake core-image-minimal
-  $ /mnt/work/sama5d27-som1-ek1/poky/build-microchip/tmp/deploy/images/sama5d27-som1-ek-sd
-  $ sudo dd if=core-image-minimal-sama5d27-som1-ek-sd.wic bs=1M of=/dev/sdh && sync
+  $ cd /mnt/work/sama5d27-som1-ek1/poky/build-microchip/tmp/deploy/images/sama5d27-som1-ek-sd
+  $ sudo dd if=core-image-minimal-sama5d27-som1-ek-sd.wic bs=1M of=/dev/sdX && sync
 
 - remount uSD card
   $ sudo cp zImage-at91-sama5d27_som1_ek.dtb /media/botond/boot/at91-sama5d27_som1_ek.dtb
-  $ cp zImage /media/botond/boot/
-  $ tar -zvxf modules-sama5d27-som1-ek-sd.tgz -C /media/botond/root/ && sync
+  $ sudo cp zImage /media/botond/boot/
 
 - ejct uSD card, reboot som1-ek1
 
