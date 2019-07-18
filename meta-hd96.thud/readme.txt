@@ -7,7 +7,6 @@ loaded from uSD card.
     - current directory is .../poky/build-microchip . Execute the following:
       $ cp .../meta-hd96.thud/meta-hd96/ ../../ -R
       $ cp .../meta-hd96.thud/poky/build-microchip/conf/* conf/
-      $ bitbake-layers add-layer ../../meta-hd96/
 
     - modify ../../meta-atmel/conf/machine/sama5d27-som1-ek-sd.conf based on
 ../meta-atmel/ (relative to the directory of this readme)
