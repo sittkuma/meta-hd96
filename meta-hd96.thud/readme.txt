@@ -81,7 +81,7 @@ internet speed and require around 35GB disk space
       # iw dev wlan0 link
 
     - acquire IP address and test connection
-      # dhclient wlan0
+      # udhcpc -i wlan0
       # ifconfig wlan0
       # ping amazon.com
 

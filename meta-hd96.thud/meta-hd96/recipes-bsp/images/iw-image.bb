@@ -9,7 +9,6 @@ IMAGE_INSTALL = "\
     kernel-modules \
     iw \
     kmod \
-    dhcp-client \
     python-pip \
     python-smbus \
     ppp \
