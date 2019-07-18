@@ -10,7 +10,7 @@ loaded from uSD card.
 
     - modify ../../meta-atmel/conf/machine/sama5d27-som1-ek-sd.conf based on
 ../meta-atmel/ (relative to the directory of this readme)
-      $ cp .../meta-hd96.thud/meta-atmel/ ../../meta-atmel/ -R
+      $ cp .../meta-hd96.thud/meta-atmel/ ../../ -R
 
     - building the image will take half an hour or more depending on machine and
 internet speed and require around 35GB disk space
