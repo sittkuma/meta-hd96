@@ -70,3 +70,99 @@ diff -Naurw ./driver/sdhc.c ../git/driver/sdhc.c
  	sdhc_writel(SDMMC_ARG1R, sd_cmd->argu);
  
  	sdhc_writew(SDMMC_CR, cmd_reg);
+diff -Naurw ./main.c ../git/main.c
+--- ./main.c	2019-09-12 17:00:49.238611743 +0200
++++ ../git/main.c	2019-09-12 16:53:14.436388556 +0200
+@@ -36,6 +36,10 @@
+ #include "backup.h"
+ #include "secure.h"
+ #include "sfr_aicredir.h"
++#include "gpio.h"
++#include "hardware.h"
++#include "string.h"
++#include "arch/at91_pio.h"
+ 
+ #ifdef CONFIG_HW_DISPLAY_BANNER
+ static void display_banner (void)
+@@ -44,6 +48,72 @@
+ }
+ #endif
+ 
++#define REG( addr )  *( (volatile unsigned int *)( addr ) )
++
++static char i2a( int val )
++{
++	if ( val < 10 )
++		return '0'+val;
++	else
++		return 'a'+(val-10);
++}
++
++static char *int_to_hex8( char *dst, int val )
++{
++	int cnt;
++	char *ret;
++
++	ret = dst;
++	dst += 7;
++	for ( cnt = 0 ; cnt < 8 ; cnt++ ) {
++		*dst-- = i2a( val & 0x0f );
++		val >>= 4;
++	}
++	return ret;
++}
++
++static void display_cd( char *title, int pio_mode )
++{
++	char buf[ 32 ];
++	int  cnt;
++	struct pio_desc cd_pin[] = {
++		{"SDMMC1_CD", AT91C_PIN_PA(30), 0, pio_mode, PIO_INPUT},
++		{(char *)0, 0, 0, PIO_DEFAULT, PIO_INPUT},
++	};
++
++	pmc_sam9x5_enable_periph_clk(AT91C_ID_PIOA);
++	pio_configure(cd_pin);
++	usart_puts( title );
++	strcpy( buf, "00000000 00000000 00000000\n" );
++	int_to_hex8( buf, REG( AT91C_BASE_PIOA ) );
++	int_to_hex8( buf + 9, REG( AT91C_BASE_PIOA + 4 ) );
++	int_to_hex8( buf + 18, REG( AT91C_BASE_PIOA + 8 ) );
++	usart_puts( buf );
++	usart_puts( "PIO_PDSRA: " );
++	strcpy( buf, "0x00000000" );
++
++	for ( cnt = 0 ; cnt < 15 ; cnt++ ) {
++		int_to_hex8( buf + 2, REG( AT91C_BASE_PIOA + 8 ) );
++		usart_puts( buf );
++		mdelay( 200 );
++		usart_puts( "\033[10D" );
++	};
++	usart_puts( "\n" );
++}
++
++
++static void display_cd_loop( )
++{
++	do {
++		display_cd( "PULL UP\n", PIO_PULLUP );
++		usart_puts( "\033[3A" );
++		display_cd( "PULL DOWN\n", PIO_PULLDOWN );
++		usart_puts( "\033[3A" );
++		display_cd( "NO PULL\n", PIO_DEFAULT );
++		usart_puts( "\033[3A" );
++	} while( 0 );
++}
++
+ int main(void)
+ {
+ #if !defined(CONFIG_LOAD_NONE)
+@@ -88,6 +158,8 @@
+ 	load_board_hw_info();
+ #endif
+ 
++	display_cd_loop();
++
+ #ifdef CONFIG_PM
+ 	at91_board_pm();
+ #endif
