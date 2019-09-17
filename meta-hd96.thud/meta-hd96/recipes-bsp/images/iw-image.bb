@@ -16,6 +16,7 @@ IMAGE_INSTALL = "\
     openssl \
     cmake \
     ppp \
+    dhcp-client \
     wilc1000-firmware \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
