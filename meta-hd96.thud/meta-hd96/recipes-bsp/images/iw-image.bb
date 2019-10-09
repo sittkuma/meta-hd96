@@ -2,6 +2,7 @@ DESCRIPTION = "A console-only image with more full-featured Linux system \
 functionality installed."
 
 IMAGE_FEATURES += "ssh-server-openssh"
+IMAGE_ROOTFS_SIZE = "1572864"
 
 PACKAGECONFIG_append_pn-gnutls = " p11-kit"
 
