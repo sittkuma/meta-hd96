@@ -90,7 +90,7 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +			bus-width = <4>;
 +			pinctrl-names = "default";
 +			pinctrl-0 = <&pinctrl_sdmmc1_default>;
-+			cd-gpios = <&pioA PIN_PD23 GPIO_ACTIVE_HIGH>;
++			cd-gpios = <&pioA PIN_PA30 GPIO_ACTIVE_HIGH>;
 +			status = "okay";
 +		};
 +
