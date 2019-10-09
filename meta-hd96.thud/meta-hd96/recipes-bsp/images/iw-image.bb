@@ -13,7 +13,6 @@ IMAGE_INSTALL = "\
     iw \
     kmod \
     python-pip \
-    python-smbus \
     python3 \
     python3-pip \
     openssl \
@@ -28,10 +27,22 @@ IMAGE_INSTALL = "\
     wilc1000-firmware \
     udev \
     git \
+    ethtool \
     p11-kit \
     hidapi \
+    python3-asn1crypto \
+    python3-cffi \
+    python3-click \
+    python3-cryptography \
+    python3-cryptoauthlib \
     cryptoauthlib \
-    ethtool \
+    cryptoauthlib-dev \
+    python3-flask \
+    python3-pyserial \
+    python3-can \
+    python3-smbus \
+    python3-spidev \
+    python3-wrapt \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
