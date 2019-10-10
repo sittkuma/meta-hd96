@@ -7,12 +7,9 @@ loaded from uSD card.
     - current directory is poky/ . Execute the following:
       $ cp .../meta-hd96.thud/meta-hd96/ ../ -R
       $ patch -p1 < .../meta-hd96.thud/poky.patch
-      $ cd ../meta-atmel/
-      $ patch -p1 < .../meta-hd96.thud/meta-atmel.patch
-      $ cd ../poky/
 
     - building the image will take an hour or more depending on machine and
-internet speed and require around 45GB disk space
+internet speed and require around 46GiB disk space
       $ source oe-init-build-env build-microchip
       $ bitbake iw-image
 
