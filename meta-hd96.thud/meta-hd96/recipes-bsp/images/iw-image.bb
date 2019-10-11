@@ -44,6 +44,7 @@ IMAGE_INSTALL = "\
     python3-smbus \
     python3-spidev \
     python3-wrapt \
+    mpio \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
