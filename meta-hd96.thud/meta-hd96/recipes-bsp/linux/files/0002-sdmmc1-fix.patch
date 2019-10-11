@@ -1,0 +1,21 @@
+diff -Naurw ./drivers/mmc/host/sdhci-of-at91.c ../kernel-source/drivers/mmc/host/sdhci-of-at91.c
+--- ./drivers/mmc/host/sdhci-of-at91.c	2019-10-11 14:07:47.896977784 +0200
++++ ../kernel-source/drivers/mmc/host/sdhci-of-at91.c	2019-10-11 14:05:57.730405302 +0200
+@@ -126,7 +126,7 @@
+ {
+ 	sdhci_reset(host, mask);
+ 
+-	if (host->mmc->caps & MMC_CAP_NONREMOVABLE)
++	/* if (host->mmc->caps & MMC_CAP_NONREMOVABLE) */
+ 		sdhci_at91_set_force_card_detect(host);
+ }
+ 
+@@ -413,7 +413,7 @@
+ 	 * This bit is reset when a software reset for all command is performed
+ 	 * so we need to implement our own reset function to set back this bit.
+ 	 */
+-	if (host->mmc->caps & MMC_CAP_NONREMOVABLE)
++	/* if (host->mmc->caps & MMC_CAP_NONREMOVABLE) */
+ 		sdhci_at91_set_force_card_detect(host);
+ 
+ 	device_init_wakeup(&pdev->dev, true);

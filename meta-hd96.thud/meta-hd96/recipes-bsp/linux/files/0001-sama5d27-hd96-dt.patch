@@ -1,6 +1,6 @@
 diff -Naurw ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi ../kernel-source/arch/arm/boot/dts/at91-sama5d27_som1.dtsi
---- ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi	2019-09-19 10:37:21.819977678 +0200
-+++ ../kernel-source/arch/arm/boot/dts/at91-sama5d27_som1.dtsi	2019-09-19 10:33:33.345382064 +0200
+--- ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi	2019-10-11 14:07:45.725085351 +0200
++++ ../kernel-source/arch/arm/boot/dts/at91-sama5d27_som1.dtsi	2019-10-11 14:05:56.050487580 +0200
 @@ -19,7 +19,7 @@
  		};
  
@@ -12,8 +12,8 @@ diff -Naurw ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi ../kernel-source/arch/ar
  
 diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts
 --- ./arch/arm/boot/dts/sama5d27_hd96.dts	1970-01-01 01:00:00.000000000 +0100
-+++ ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts	2019-09-19 10:33:32.841375867 +0200
-@@ -0,0 +1,682 @@
++++ ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts	2019-10-11 14:05:56.050487580 +0200
+@@ -0,0 +1,687 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * at91-sama5d27_som1_ek.dts - Device Tree file for SAMA5D27-SOM1-EK board
@@ -128,6 +128,11 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +				pinctrl-names = "default";
 +				pinctrl-0 = <&pinctrl_spi0_default>;
 +				status = "okay";
++				spidev@0 {
++					compatible = "ge,achc";   /* avoiding "buggy DT ..." warning during boot - see spidev_probe() */
++					spi-max-frequency = <1000000>;
++					reg = <0>;
++				};
 +			};
 +
 +			spi1: spi@fc000000 {
@@ -696,24 +701,3 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +		status = "okay";
 +	};
 +};
-diff -Naurw ./drivers/mmc/host/sdhci-of-at91.c ../kernel-source/drivers/mmc/host/sdhci-of-at91.c
---- ./drivers/mmc/host/sdhci-of-at91.c	2019-09-19 10:37:23.691997428 +0200
-+++ ../kernel-source/drivers/mmc/host/sdhci-of-at91.c	2019-09-19 10:33:35.577409481 +0200
-@@ -126,7 +126,7 @@
- {
- 	sdhci_reset(host, mask);
- 
--	if (host->mmc->caps & MMC_CAP_NONREMOVABLE)
-+	/* if (host->mmc->caps & MMC_CAP_NONREMOVABLE) */
- 		sdhci_at91_set_force_card_detect(host);
- }
- 
-@@ -413,7 +413,7 @@
- 	 * This bit is reset when a software reset for all command is performed
- 	 * so we need to implement our own reset function to set back this bit.
- 	 */
--	if (host->mmc->caps & MMC_CAP_NONREMOVABLE)
-+	/* if (host->mmc->caps & MMC_CAP_NONREMOVABLE) */
- 		sdhci_at91_set_force_card_detect(host);
- 
- 	device_init_wakeup(&pdev->dev, true);
