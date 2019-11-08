@@ -49,6 +49,9 @@ IMAGE_INSTALL = "\
     python3-evdev \
     boost \
     boost-dev \
+    connman \
+    connman-client \
+    connman-tools \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
