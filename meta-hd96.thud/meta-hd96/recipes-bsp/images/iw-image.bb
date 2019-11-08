@@ -18,6 +18,7 @@ IMAGE_INSTALL = "\
     python3-pip \
     openssl \
     openssl-bin \
+    libssl10 \
     cmake \
     libp11 \
     libp11-dev \
@@ -45,6 +46,9 @@ IMAGE_INSTALL = "\
     python3-spidev \
     python3-wrapt \
     mpio \
+    python3-evdev \
+    boost \
+    boost-dev \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
