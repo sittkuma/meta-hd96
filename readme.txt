@@ -79,3 +79,30 @@ remote machine execute:
       $ ssh root@<IP of Helmsdeep96>
 
 
+
+    Automatic WiFi configuration with connman
+
+    - reboot, login as root and enter
+      # connmanctl
+      connmanctl> enable wifi
+      connmanctl> scan wifi
+      connmanctl> services
+
+    - some WiFi services will be listed like
+      SSID1                wifi_000000000000_4d696368656c696e204775657374_managed_none
+      SSID2                wifi_000000000000_494e455443464156_managed_psk
+      ...
+
+      connmanctl> agent on
+      connmanctl> connect wifi_000   # TAB can be used to autocomplete network name
+      Agent RequestInput wifi_000000000000_47355f37353635_managed_psk
+        Passphrase = [ Type=psk, Requirement=mandatory ]
+      Passphrase? ********
+
+    - after a few seconds connmanctl displays this
+      Connected wifi_00..._managed_psk
+      connmanctl> ^D
+
+    - in a few seconds connman requests IP address and the connection will be
+      started automatically after reboot
+
