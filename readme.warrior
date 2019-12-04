@@ -1,4 +1,4 @@
-    meta-hd96 layer will create "iw-image" image running on the Helm's Deep 96
+    meta-hd96 layer will create "connman-image" image running on the Helm's Deep 96
 board. at91bootstrap will start from QSPI flash, U-Boot and Linux will be
 loaded from uSD card.
 
@@ -11,7 +11,7 @@ loaded from uSD card.
     - building the image will take an hour or more depending on machine and
 internet speed and require around 46GiB disk space
       $ source oe-init-build-env build-microchip
-      $ bitbake iw-image
+      $ bitbake connman-image
 
 
 
@@ -19,7 +19,7 @@ internet speed and require around 46GiB disk space
 
     - copy initial filesystem image to uSD card:
       $ cd tmp/deploy/images/sama5d27-hd96/
-      $ sudo dd if=iw-image-sama5d27-hd96.wic bs=1M of=/dev/sdX && sync
+      $ sudo dd if=connman-image-sama5d27-hd96.wic bs=1M of=/dev/sdX && sync
       where /dev/sdX is the location of an UNMOUNTED uSD card
 
     Writing at91bootstrap into NOR flash
