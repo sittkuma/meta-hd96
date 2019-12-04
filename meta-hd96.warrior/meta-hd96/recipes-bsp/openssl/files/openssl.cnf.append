@@ -1,0 +1,15 @@
+
+[openssl_init]
+engines=engine_section
+
+[engine_section]
+pkcs11 = pkcs11_section
+
+[pkcs11_section]
+engine_id = pkcs11
+# Wherever the engine installed by libp11 is. For example it could be:
+# /usr/lib/arm-linux-gnueabihf/engines-1.1/libpkcs11.so
+dynamic_path = /usr/lib/engines-1.1/libpkcs11.so
+MODULE_PATH = /usr/lib/libcryptoauth.so
+init = 0
+
