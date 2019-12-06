@@ -12,6 +12,6 @@ DEPENDS += "cmake-native"
 inherit pypi setuptools3
 
 do_install_append() {
-#    rm ${D}/usr/lib/python3.5/site-packages/cryptoauthlib/libcryptoauth.so
+    rm ${D}/usr/lib/python3.7/site-packages/cryptoauthlib/libcryptoauth.so
 }
 
