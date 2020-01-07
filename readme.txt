@@ -5,8 +5,8 @@ loaded from uSD card.
     - follow this how-to up to (and including) step 5 -> "cd poky":
         https://github.com/linux4sam/meta-atmel/tree/warrior
     - current directory is poky/ . Execute the following:
-      $ cp .../meta-hd96.warrior/meta-hd96/ ../ -R
-      $ patch -p1 < .../meta-hd96.warrior/poky.patch
+      $ cp .../meta-hd96/ ../ -R
+      $ patch -p1 < .../poky.patch
 
     - building the image will take an hour or more depending on machine and
 internet speed and require around 46GiB disk space
