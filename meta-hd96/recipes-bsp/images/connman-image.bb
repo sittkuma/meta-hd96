@@ -55,6 +55,9 @@ IMAGE_INSTALL = "\
     cronie \
     lighttpd \
     lighttpd-module-fastcgi \
+    openjdk-8 \
+    docker-ce \
+    python3-docker-compose \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
