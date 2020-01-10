@@ -13,7 +13,7 @@ loaded from uSD card.
       $ patch -p1 < .../meta-hd96/poky.patch
 
     - building the image will take an hour or more depending on machine and
-internet speed and require around 46GiB disk space
+internet speed and require around 75GiB disk space
       $ source oe-init-build-env build-microchip
       $ bitbake connman-image
 

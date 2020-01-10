@@ -1,0 +1,2 @@
+ALTERNATIVE_PRIORITY[tee] = "50"
+

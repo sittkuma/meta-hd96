@@ -58,6 +58,7 @@ IMAGE_INSTALL = "\
     openjdk-8 \
     docker-ce \
     python3-docker-compose \
+    corelockr corelockr-dev \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
