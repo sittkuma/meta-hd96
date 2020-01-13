@@ -10,18 +10,6 @@ diff -Naurw ./arch/arm/lib/relocate.S ../git/arch/arm/lib/relocate.S
  	ldr	r1, =__image_copy_start	/* r1 <- SRC &__image_copy_start */
  	subs	r4, r0, r1		/* r4 <- relocation offset */
  	beq	relocate_done		/* skip relocation */
-diff -Naurw ./drivers/mmc/sdhci.c ../git/drivers/mmc/sdhci.c
---- ./drivers/mmc/sdhci.c	2019-07-16 16:01:44.750009700 +0200
-+++ ../git/drivers/mmc/sdhci.c	2019-07-16 16:02:13.844444159 +0200
-@@ -254,6 +254,8 @@
- 		sdhci_writeb(host, 0xe, SDHCI_TIMEOUT_CONTROL);
- 	}
- 
-+	sdhci_writeb(host, sdhci_readb(host, 0x204) | 0x80, 0x204 );
-+
- 	sdhci_writel(host, cmd->cmdarg, SDHCI_ARGUMENT);
- #ifdef CONFIG_MMC_SDHCI_SDMA
- 	if (data) {
 diff -Naurw ./include/configs/sama5d27_som1_ek.h ../git/include/configs/sama5d27_som1_ek.h
 --- ./include/configs/sama5d27_som1_ek.h	2019-07-16 16:01:44.862003663 +0200
 +++ ../git/include/configs/sama5d27_som1_ek.h	2019-07-16 16:02:13.844444159 +0200

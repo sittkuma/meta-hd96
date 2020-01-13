@@ -796,41 +796,6 @@ diff -Naurw ./board/sama5d27_hd96/sama5d27_hd96spi_uboot_defconfig ../git/board/
 +CONFIG_JUMP_ADDR="0x23f00000"
 +CONFIG_DEBUG=y
 +# CONFIG_ENTER_NWD is not set
-diff -Naurw ./driver/sdhc.c ../git/driver/sdhc.c
---- ./driver/sdhc.c	2019-12-02 15:24:11.640858267 +0100
-+++ ../git/driver/sdhc.c	2019-12-02 15:08:50.397785927 +0100
-@@ -496,6 +496,8 @@
- 	return 0;
- }
- 
-+#if 0
-+
- static int sdhc_is_card_inserted(struct sd_card *sdcard)
- {
- 	/*
-@@ -542,6 +544,13 @@
- 	return is_inserted;
- }
- 
-+#else
-+
-+#define sdhc_is_card_inserted( x )  1
-+
-+#endif
-+
-+
- static int sdhc_init(struct sd_card *sdcard)
- {
- 	unsigned int normal_status_mask, error_status_mask;
-@@ -762,6 +771,8 @@
- 		}
- 	}
- 
-+	sdhc_writeb( SDMMC_MC1R, sdhc_readb(SDMMC_MC1R) | 0x80 );
-+
- 	sdhc_writel(SDMMC_ARG1R, sd_cmd->argu);
- 
- 	sdhc_writew(SDMMC_CR, cmd_reg);
 diff -Naurw ./include/board.h ../git/include/board.h
 --- ./include/board.h	2019-12-02 15:24:11.644857913 +0100
 +++ ../git/include/board.h	2019-12-02 15:08:50.397785927 +0100

@@ -13,7 +13,7 @@ diff -Naurw ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi ../kernel-source/arch/ar
 diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts
 --- ./arch/arm/boot/dts/sama5d27_hd96.dts	1970-01-01 01:00:00.000000000 +0100
 +++ ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts	2019-10-11 14:05:56.050487580 +0200
-@@ -0,0 +1,687 @@
+@@ -0,0 +1,686 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * at91-sama5d27_som1_ek.dts - Device Tree file for SAMA5D27-SOM1-EK board
@@ -90,7 +90,6 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +			bus-width = <4>;
 +			pinctrl-names = "default";
 +			pinctrl-0 = <&pinctrl_sdmmc1_default>;
-+			cd-gpios = <&pioA PIN_PA30 GPIO_ACTIVE_HIGH>;
 +			status = "okay";
 +		};
 +
@@ -487,7 +486,7 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +
 +					conf-ck_cd {
 +						pinmux = <PIN_PA22__SDMMC1_CK>,
-+							 <PIN_PD23__GPIO>;
++							 <PIN_PA30__SDMMC1_CD>;
 +						bias-disable;
 +					};
 +				};
