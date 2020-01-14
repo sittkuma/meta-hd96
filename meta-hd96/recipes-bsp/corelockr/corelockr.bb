@@ -29,6 +29,8 @@ do_install () {
     install -m 755 ${WORKDIR}/usr/bin/* ${D}${bindir}
 }
 
+INSANE_SKIP_${PN} = "already-stripped"
+
 FILES_${PN}-dev += "/lib/libteec.so"
 FILES_${PN}-dev += "/lib/libseqr_corelockr_cert.so"
 FILES_${PN}-dev += "/lib/libseqr_corelockr_crypto.so"
