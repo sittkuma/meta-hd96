@@ -13,7 +13,7 @@ diff -Naurw ./arch/arm/boot/dts/at91-sama5d27_som1.dtsi ../kernel-source/arch/ar
 diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts
 --- ./arch/arm/boot/dts/sama5d27_hd96.dts	1970-01-01 01:00:00.000000000 +0100
 +++ ../kernel-source/arch/arm/boot/dts/sama5d27_hd96.dts	2019-10-11 14:05:56.050487580 +0200
-@@ -0,0 +1,686 @@
+@@ -0,0 +1,637 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * at91-sama5d27_som1_ek.dts - Device Tree file for SAMA5D27-SOM1-EK board
@@ -34,8 +34,8 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +
 +	aliases {
 +		serial0 = &uart1;	/* DBGU */
-+		serial1 = &uart4;	/* mikro BUS 1 */
-+		serial2 = &uart2;	/* mikro BUS 2 */
++		serial1 = &uart5;	/* LS expansion UART0 */
++		serial2 = &uart6;	/* LS expansion UART1 */
 +		i2c0	= &i2c0;
 +		i2c1	= &i2c1;
 +		i2c2	= &i2c2;
@@ -212,33 +212,11 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +				};
 +			};
 +
-+			flx3: flexcom@fc014000 {
-+				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
-+				status = "okay";
-+
-+				i2c3: i23@600 {
-+					compatible = "atmel,sama5d2-i2c";
-+					reg = <0x600 0x200>;
-+					interrupts = <22 IRQ_TYPE_LEVEL_HIGH 7>;
-+					dmas = <0>, <0>;
-+					dma-names = "tx", "rx";
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					clocks = <&flx3_clk>;
-+					clock-names = "spi_clk";
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_flx3_default>;
-+					atmel,fifo-size = <16>;
-+					status = "okay";
-+				};
-+			};
-+
-+#if 0
 +			flx1: flexcom@f8038000 {
 +				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
 +				status = "okay";
 +
-+				i2c2: i2c@600 {
++				i2c3: i2c@600 {
 +					compatible = "atmel,sama5d2-i2c";
 +					reg = <0x600 0x200>;
 +					interrupts = <20 IRQ_TYPE_LEVEL_HIGH 7>;
@@ -250,10 +228,44 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +					pinctrl-names = "default";
 +					pinctrl-0 = <&pinctrl_mikrobus_i2c>;
 +					atmel,fifo-size = <16>;
-+					status = "disabled";
++					status = "okay";
 +				};
 +			};
-+#endif
++
++			flx3: flexcom@fc014000 {
++				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_USART>;
++				status = "okay";
++
++				uart5: serial@200 {
++					compatible = "atmel,at91sam9260-usart";
++					reg = <0x200 0x200>;
++					interrupts = <22 IRQ_TYPE_LEVEL_HIGH 7>;
++					clocks = <&flx3_clk>;
++					clock-names = "usart";
++					pinctrl-names = "default";
++					pinctrl-0 = <&pinctrl_flx3_uart>;
++					atmel,fifo-size = <32>;
++					status = "okay";
++				};
++			};
++
++			flx4: flexcom@fc018000 {
++				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_USART>;
++				status = "okay";
++
++				uart6: serial@200 {
++					compatible = "atmel,at91sam9260-usart";
++					reg = <0x200 0x200>;
++					interrupts = <23 IRQ_TYPE_LEVEL_HIGH 7>;
++					clocks = <&flx4_clk>;
++					clock-names = "usart";
++					pinctrl-names = "default";
++					pinctrl-0 = <&pinctrl_flx4_uart>;
++					atmel,fifo-size = <32>;
++					status = "okay";
++				};
++			};
++
 +			shdwc@f8048010 {
 +				atmel,shdwc-debouncer = <976>;
 +				atmel,wakeup-rtc-timer;
@@ -283,81 +295,6 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +				pinctrl-0 = <&pinctrl_mikrobus1_uart>;
 +				status = "disabled";
 +			};
-+
-+#if 0
-+			flx3: flexcom@fc014000 {
-+				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_SPI>;
-+				status = "disabled";
-+
-+				uart7: serial@200 {
-+					compatible = "atmel,at91sam9260-usart";
-+					reg = <0x200 0x200>;
-+					interrupts = <22 IRQ_TYPE_LEVEL_HIGH 7>;
-+					clocks = <&flx3_clk>;
-+					clock-names = "usart";
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_flx3_default>;
-+					atmel,fifo-size = <32>;
-+					status = "disabled"; /* Conflict with isc. */
-+				};
-+
-+				spi2: spi@400 {
-+					compatible = "atmel,at91rm9200-spi";
-+					reg = <0x400 0x200>;
-+					interrupts = <22 IRQ_TYPE_LEVEL_HIGH 7>;
-+					clocks = <&flx3_clk>;
-+					clock-names = "spi_clk";
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_flx3_default>;
-+					atmel,fifo-size = <16>;
-+					status = "disabled"; /* Conflict with isc. */
-+				};
-+			};
-+
-+			flx4: flexcom@fc018000 {
-+				atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_SPI>;
-+				status = "okay";
-+
-+				uart6: serial@200 {
-+					compatible = "atmel,at91sam9260-usart";
-+					reg = <0x200 0x200>;
-+					interrupts = <23 IRQ_TYPE_LEVEL_HIGH 7>;
-+					clocks = <&flx4_clk>;
-+					clock-names = "usart";
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_flx4_default>;
-+					atmel,fifo-size = <32>;
-+					status = "disabled"; /* Conflict with spi3 and i2c3. */
-+				};
-+
-+				spi3: spi@400 {
-+					compatible = "atmel,at91rm9200-spi";
-+					reg = <0x400 0x200>;
-+					interrupts = <23 IRQ_TYPE_LEVEL_HIGH 7>;
-+					clocks = <&flx4_clk>;
-+					clock-names = "spi_clk";
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_mikrobus_spi &pinctrl_mikrobus1_spi_cs &pinctrl_mikrobus2_spi_cs>;
-+					atmel,fifo-size = <16>;
-+					status = "disabled"; /* Conflict with uart6 and i2c3. */
-+				};
-+
-+				i2c3: i2c@600 {
-+					compatible = "atmel,sama5d2-i2c";
-+					reg = <0x600 0x200>;
-+					interrupts = <23 IRQ_TYPE_LEVEL_HIGH 7>;
-+					dmas = <0>, <0>;
-+					dma-names = "tx", "rx";
-+					#address-cells = <1>;
-+					#size-cells = <0>;
-+					clocks = <&flx4_clk>;
-+					pinctrl-names = "default";
-+					pinctrl-0 = <&pinctrl_flx4_default>;
-+					atmel,fifo-size = <16>;
-+					status = "disabled"; /* Conflict with uart6 and spi3. */
-+				};
-+			};
-+#endif
 +
 +			i2c1: i2c@fc028000 {
 +				dmas = <0>, <0>;
@@ -390,6 +327,14 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +				pinctrl_flx3_default: flx3_default {
 +					pinmux = <PIN_PB23__FLEXCOM3_IO0>,
 +						 <PIN_PB22__FLEXCOM3_IO1>;
++					bias-disable;
++				};
++
++				pinctrl_flx3_uart: flx3_uart_uart {
++					pinmux = <PIN_PC20__FLEXCOM3_IO0>,
++						 <PIN_PC19__FLEXCOM3_IO1>,
++						 <PIN_PC21__FLEXCOM3_IO3>,
++						 <PIN_PC22__FLEXCOM3_IO4>;
 +					bias-disable;
 +				};
 +
@@ -611,6 +556,12 @@ diff -Naurw ./arch/arm/boot/dts/sama5d27_hd96.dts ../kernel-source/arch/arm/boot
 +						 <PIN_PC30__FLEXCOM4_IO2>,
 +						 <PIN_PC31__FLEXCOM4_IO3>,
 +						 <PIN_PD0__FLEXCOM4_IO4>;
++					bias-disable;
++				};
++
++				pinctrl_flx4_uart: flx4_uart_uart {
++					pinmux = <PIN_PC28__FLEXCOM4_IO0>,
++						 <PIN_PC29__FLEXCOM4_IO1>;
 +					bias-disable;
 +				};
 +			};
