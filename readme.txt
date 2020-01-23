@@ -26,6 +26,14 @@ internet speed and require around 75GiB disk space
       $ sudo dd if=connman-image-sama5d27-hd96.wic bs=1M of=/dev/sdX && sync
       where /dev/sdX is the location of an UNMOUNTED uSD card
 
+
+    Booting from uSD card
+
+    - insert uSD card
+    - disconnect J3
+    - connect J10 to PC
+
+
     Writing at91bootstrap into NOR flash
 
     - prepare at91bootstrap for SAM-BA (still in .../tmp/deploy/images/sama5d27-hd96 folder ):
@@ -42,14 +50,14 @@ internet speed and require around 75GiB disk space
       sam-ba.exe -p serial:COM37 -d sama5d2 -a bootconfig -c writecfg:bscr:bureg0,valid
 
     - open TeraTerm for COM37, configure it to 115200,N81
-    - insert uSD card into Gateway96
+    - insert uSD card into Helm's Deep 96
     - press nRST
     - smile :)
     (sometimes Linux gets faster to the login prompt if an ethernet cable is connected)
 
 
 
-    Testing WiFi on Gateway96
+    Testing WiFi on Helm's Deep 96
 
     - log in to Linux as user 'root'
     - execute these:
