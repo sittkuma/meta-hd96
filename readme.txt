@@ -4,10 +4,6 @@ board. It is possible to boot from NOR flash + uSD card or only from uSD card.
 
 
     Creating connman-image
-at91bootstrap will start from QSPI flash, U-Boot and Linux will be
-loaded from uSD card.
-
-    Creating connman-image
 
     - follow this how-to up to (and including) step 5 -> "cd poky":
         https://github.com/linux4sam/meta-atmel/tree/warrior
