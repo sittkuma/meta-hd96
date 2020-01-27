@@ -1,6 +1,13 @@
-    meta-hd96 layer will create "connman-image" image running on the Helm's Deep 96
-board. at91bootstrap will start from QSPI flash, U-Boot and Linux will be
+    meta-hd96 layer will create various uSD card images running on the Helm's Deep 96
+board. It is possible to boot from NOR flash + uSD card or only from uSD card.
+
+
+
+    Creating connman-image
+at91bootstrap will start from QSPI flash, U-Boot and Linux will be
 loaded from uSD card.
+
+    Creating connman-image
 
     - follow this how-to up to (and including) step 5 -> "cd poky":
         https://github.com/linux4sam/meta-atmel/tree/warrior
@@ -26,15 +33,18 @@ internet speed and require around 75GiB disk space
       $ sudo dd if=connman-image-sama5d27-hd96.wic bs=1M of=/dev/sdX && sync
       where /dev/sdX is the location of an UNMOUNTED uSD card
 
-
     Booting from uSD card
 
     - insert uSD card
     - disconnect J3
     - connect J10 to PC
+    - start TeraTerm or similar terminal emulator, configure the COM port to
+      115200,N81
+    - after reboot one can log in as 'root', no password
 
 
-    Writing at91bootstrap into NOR flash
+
+    Writing at91bootstrap into NOR flash and booting from NOR flash
 
     - prepare at91bootstrap for SAM-BA (still in .../tmp/deploy/images/sama5d27-hd96 folder ):
       $ cp at91bootstrap.bin <SAM-BA folder>
@@ -118,3 +128,17 @@ remote machine execute:
     - in a few seconds connman requests IP address and the connection will be
       started automatically after reboot
 
+
+
+    Building a WiFi access point with hostapd-image
+
+    - follow the steps at "Creating connman-image"
+    - the last command should be replaced by this:
+      $ bitbake hostapd-image
+
+    - the uSD card image will be written to:
+      tmp/deploy/images/sama5d27-hd96/hostapd-image-sama5d27-hd96.wic
+
+    - after booting the board the file /home/root/README_WIFI.txt will contain
+      instructions about setting up a WiFi access point
+ 

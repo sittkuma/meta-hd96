@@ -9,8 +9,8 @@ MACHINE_EXTRA_RRECOMMENDS += "kernel-modules"
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
-    packagegroup-base-wifi \
     packagegroup-core-buildessential \
+    packagegroup-base-wifi \
     kernel-modules \
     chkconfig \
     kmod \
@@ -50,9 +50,8 @@ IMAGE_INSTALL = "\
     python3-evdev \
     boost \
     boost-dev \
-    connman \
-    connman-client \
-    connman-tools \
+    hostapd \
+    iptables \
     cronie \
     lighttpd \
     lighttpd-module-fastcgi \
