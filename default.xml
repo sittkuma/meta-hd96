@@ -8,12 +8,13 @@
   
   <default remote="yocto"/>
   
-  <project name="poky" path="poky" revision="warrior"/>
-  <project name="meta-openembedded" path="meta-openembedded" remote="oe" revision="warrior"/>
-  <project name="meta-qt5" path="meta-qt5" remote="qt5" revision="upstream/warrior"/>
-  <project name="meta-atmel" path="meta-atmel" remote="linux4sam" revision="warrior"/>
-  <project name="meta-virtualization" path="meta-virtualization" revision="warrior"/>
-  <project name="meta-java" path="meta-java" revision="warrior"/>
+  <project name="poky" path="poky" revision="2bd2f56d4163218662b01712feff9719ace66e31"/>
+  <project name="meta-openembedded" path="meta-openembedded" remote="oe" revision="a24acf94d48d635eca668ea34598c6e5c857e3f8"/>
+  <project name="meta-qt5" path="meta-qt5" remote="qt5" revision="20331bd6b696793a7aa23a3c035e5ebcf3075aa3"/>
+  <project name="meta-atmel" path="meta-atmel" remote="linux4sam" revision="14fb955913a9636cceef8a1ab36ee1f385830777"/>
+  <project name="meta-virtualization" path="meta-virtualization" revision="bda5b6ab326a4926aedd32f137de5f3837c8cdb8"/>
+  <project name="meta-java" path="meta-java" revision="d0a9fe08be6e1c2e7f7afc79abc292d3bffeb9fe"/>
+  <project name="kraj/meta-openwrt" path="meta-openwrt" remote="github" revision="c7c590f45f7625a4c4e9e1555c220a1043e30f60"/>
 
   <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.8.1">
     <copyfile src="build-microchip/conf/local.conf" dest="poky/build-microchip/conf/local.conf"/>

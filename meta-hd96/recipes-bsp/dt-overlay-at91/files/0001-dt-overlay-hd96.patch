@@ -787,7 +787,7 @@ diff -Naurw ./sama5d27_hd96.its ../git/sama5d27_hd96.its
 +/dts-v1/;
 +
 +/ {
-+	description = "Arrow SAMA5D27 Helm's Deep 96 FIT Image";
++	description = "Arrow SAMA5D27 Shield96 FIT Image";
 +	#address-cells = <1>;
 +
 +	images {

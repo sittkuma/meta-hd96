@@ -55,7 +55,7 @@ internet speed and require around 25GiB disk space.
     - prepare at91bootstrap for SAM-BA (still in .../tmp/deploy/images/sama5d27-hd96 folder ):
       $ cp at91bootstrap.bin <SAM-BA folder>
 
-    - on HD96 board remove J3, connect J10 to PC and press nRST
+    - on Shield96 board remove J3, connect J10 to PC and press nRST
     - on PC execute:
       sam-ba.exe -p serial:COM37 -d sama5d2 -a bootconfig -c readcfg:bscr -c readcfg:bureg0
 
@@ -66,14 +66,14 @@ internet speed and require around 25GiB disk space.
       sam-ba.exe -p serial:COM37 -d sama5d2 -a bootconfig -c writecfg:bscr:bureg0,valid
 
     - open TeraTerm for COM37, configure it to 115200,N81
-    - insert uSD card into Helm's Deep 96
+    - insert uSD card into Shield96
     - press nRST
     - smile :)
     (sometimes Linux gets faster to the login prompt if an ethernet cable is connected)
 
 
 
-    Testing WiFi on Helm's Deep 96
+    Testing WiFi on Shield96
 
     - log in to Linux as user 'root'
     - execute these:
@@ -104,7 +104,7 @@ internet speed and require around 25GiB disk space.
     WILC1000 driver dumps a lot of LOG messages which make normal work difficult.
 But as we already have IP address it is possible to SSH into the board. On a
 remote machine execute:
-      $ ssh root@<IP of Helmsdeep96>
+      $ ssh root@<IP of Shield96>
 
 
 

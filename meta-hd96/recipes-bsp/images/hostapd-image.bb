@@ -59,6 +59,8 @@ IMAGE_INSTALL = "\
     docker-ce \
     python3-docker-compose \
     corelockr corelockr-dev \
+    ubus \
+    rpcd \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 

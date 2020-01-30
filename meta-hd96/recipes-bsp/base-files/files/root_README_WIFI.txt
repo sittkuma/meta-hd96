@@ -30,8 +30,8 @@
 is connected it will connect to the upstream ethernet link (eth0) via DHCP.
 wlan0 will have a static IP address and a WiFi access point will be started on
 it:
-    default SSID: HelmsDeep96
-    default password: HelmsDeep96
+    default SSID: Shield96
+    default password: Shield96
     SSID and password can be changed by modifying /etc/hostapd.conf
 
 
