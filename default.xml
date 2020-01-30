@@ -15,7 +15,7 @@
   <project name="meta-virtualization" path="meta-virtualization" revision="warrior"/>
   <project name="meta-java" path="meta-java" revision="warrior"/>
 
-  <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.7">
+  <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.8">
     <copyfile src="build-microchip/conf/local.conf" dest="poky/build-microchip/conf/local.conf"/>
     <copyfile src="build-microchip/conf/bblayers.conf" dest="poky/build-microchip/conf/bblayers.conf"/>
   </project>
