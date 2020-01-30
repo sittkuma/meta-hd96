@@ -1,24 +1,34 @@
-    meta-hd96 layer will create various uSD card images running on the Helm's Deep 96
+    meta-hd96 layer will create various uSD card images running on the Shield96
 board. It is possible to boot from NOR flash + uSD card or only from uSD card.
 
 
 
     Creating connman-image
 
-    - follow this how-to up to (and including) step 5 -> "cd poky":
-        https://github.com/linux4sam/meta-atmel/tree/warrior
-    - current directory is poky/ . Execute the following:
-      $ cd ..
-      $ cp .../meta-hd96/meta-hd96/ ./ -R
-      $ git clone git://git.yoctoproject.org/meta-virtualization -b warrior
-      $ git clone git://git.yoctoproject.org/meta-java -b warrior
-      $ cd poky/
-      $ patch -p1 < .../meta-hd96/poky.patch
+    For creating the build environment one needs to use the 'repo' tool which
+is available in most Linux distributions. The build process will follow the
+"meta-atmel" way, only the build environment initialization is different and
+simpler. See meta-atmel: https://github.com/linux4sam/meta-atmel/tree/warrior
 
-    - building the image will take an hour or more depending on machine and
-internet speed and require around 75GiB disk space
+    The required steps:
+    - create a working directory and enter it
+    - initialize the build folders by issuing:
+      $ repo init -u https://github.com/bkardosa/meta-hd96.git -b warrior_v1.3
+      $ repo sync
+
+    - the above commands may display various warning or error messages which can be ignored if the
+      last displayed lines look like this:
+        Fetching projects: 100% (7/7), done.
+        Checking out projects: 100% (7/7), done.
+
+    - the following commands need to be executed for rebuilding the image:
+      $ cd poky
       $ source oe-init-build-env build-microchip
       $ bitbake connman-image
+
+    Rebuilding the image will take 1-2 hours or more depending on machine and
+internet speed and require around 25GiB disk space.
+
 
 
 

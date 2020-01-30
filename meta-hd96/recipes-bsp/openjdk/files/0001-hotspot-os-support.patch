@@ -1,0 +1,12 @@
+diff -Naurw ./hotspot/make/linux/Makefile ../jdk8u-jdk8u172-b11-aarch32-180511/hotspot/make/linux/Makefile
+--- ./hotspot/make/linux/Makefile	2020-01-30 12:39:42.934417559 +0100
++++ ../jdk8u-jdk8u172-b11-aarch32-180511/hotspot/make/linux/Makefile	2020-01-30 12:40:15.751002997 +0100
+@@ -233,7 +233,7 @@
+ # Solaris 2.5.1, 2.6).
+ # Disable this check by setting DISABLE_HOTSPOT_OS_VERSION_CHECK=ok.
+ 
+-SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 3% 4%
++SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 3% 4% 5%
+ OS_VERSION := $(shell uname -r)
+ EMPTY_IF_NOT_SUPPORTED = $(filter $(SUPPORTED_OS_VERSION),$(OS_VERSION))
+ 
