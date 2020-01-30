@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="git://git.yoctoproject.org" name="yocto" />
+  <remote fetch="git://git.openembedded.org" name="oe" />
+  <remote fetch="git://code.qt.io/yocto" name="qt5" />
+  <remote fetch="https://github.com/linux4sam" name="linux4sam" />
+  <remote fetch="https://github.com" name="github"/>
+  
+  <default remote="yocto"/>
+  
+  <project name="poky" path="poky" revision="warrior"/>
+  <project name="meta-openembedded" path="meta-openembedded" remote="oe" revision="warrior"/>
+  <project name="meta-qt5" path="meta-qt5" remote="qt5" revision="upstream/warrior"/>
+  <project name="meta-atmel" path="meta-atmel" remote="linux4sam" revision="warrior"/>
+  <project name="meta-virtualization" path="meta-virtualization" revision="warrior"/>
+  <project name="meta-java" path="meta-java" revision="warrior"/>
+
+  <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.7">
+    <copyfile src="build-microchip/conf/local.conf" dest="poky/build-microchip/conf/local.conf"/>
+    <copyfile src="build-microchip/conf/bblayers.conf" dest="poky/build-microchip/conf/bblayers.conf"/>
+  </project>
+</manifest>
