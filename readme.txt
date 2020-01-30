@@ -18,8 +18,8 @@ simpler. See meta-atmel: https://github.com/linux4sam/meta-atmel/tree/warrior
 
     - the above commands may display various warning or error messages which can be ignored if the
       last displayed lines look like this:
-        Fetching projects: 100% (7/7), done.
-        Checking out projects: 100% (7/7), done.
+        Fetching projects: 100% (8/8), done.
+        Checking out projects: 100% (8/8), done.
 
     - the following commands need to be executed for rebuilding the image:
       $ cd poky
