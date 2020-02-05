@@ -61,6 +61,10 @@ IMAGE_INSTALL = "\
     corelockr corelockr-dev \
     ubus \
     rpcd \
+    lsb \
+    ppp \
+    minicom \
+    nano \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
