@@ -17,6 +17,8 @@ SRC_URI += "file://ppp/peers/quectel-ppp-kill"
 
 RDEPENDS_${PN} += "python3-core"
 
+hostname = "shield96"
+
 do_install_append () {
     install -d ${D}${sysconfdir}/init.d
     install -d ${D}${sysconfdir}/rc5.d
