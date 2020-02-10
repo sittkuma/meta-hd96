@@ -16,7 +16,7 @@
   <project name="meta-java" path="meta-java" revision="d0a9fe08be6e1c2e7f7afc79abc292d3bffeb9fe"/>
   <project name="kraj/meta-openwrt" path="meta-openwrt" remote="github" revision="c7c590f45f7625a4c4e9e1555c220a1043e30f60"/>
 
-  <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.8.2">
+  <project name="bkardosa/meta-hd96" path="meta-hd96" remote="github" revision="refs/tags/v0.8.3">
     <copyfile src="build-microchip/conf/local.conf" dest="poky/build-microchip/conf/local.conf"/>
     <copyfile src="build-microchip/conf/bblayers.conf" dest="poky/build-microchip/conf/bblayers.conf"/>
   </project>

@@ -102,7 +102,7 @@ internet speed and require around 25GiB disk space.
     - if we want to connect to an open WiFi network the following lines need to
 	be manually added (by 'vi' or 'nano') to /etc/wpa_supplicant.conf :
 	  network={
-        ssid="Arrow-Guest"
+        ssid="name of open WiFi network"
         key_mgmt=NONE
       }
 
@@ -120,13 +120,8 @@ remote machine execute:
 
     Building a WiFi access point with hostapd-image
 
-    - follow the steps at "Creating connman-image"
-    - the last command should be replaced by this:
-      $ bitbake hostapd-image
+    After booting the board the file /home/root/README_WIFI.txt will contain
+instructions about setting up a WiFi access point.
+    /home/root/README_NB-IoT.txt contains instructions about how to start an
+NB-IoT connection and how to share it through WiFi.
 
-    - the uSD card image will be written to:
-      tmp/deploy/images/sama5d27-hd96/hostapd-image-sama5d27-hd96.wic
-
-    - after booting the board the file /home/root/README_WIFI.txt will contain
-      instructions about setting up a WiFi access point
- 
