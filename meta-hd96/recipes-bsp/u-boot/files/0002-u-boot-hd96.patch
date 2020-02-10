@@ -1,7 +1,7 @@
-diff -Naurw ./configs/sama5d27_hd96_mmc1_defconfig ../git.new/configs/sama5d27_hd96_mmc1_defconfig
+diff -Naurw ./configs/sama5d27_hd96_mmc1_defconfig ../git/configs/sama5d27_hd96_mmc1_defconfig
 --- ./configs/sama5d27_hd96_mmc1_defconfig	1970-01-01 01:00:00.000000000 +0100
-+++ ../git.new/configs/sama5d27_hd96_mmc1_defconfig	2019-09-13 17:47:15.988170156 +0200
-@@ -0,0 +1,98 @@
++++ ../git/configs/sama5d27_hd96_mmc1_defconfig	2020-02-03 17:27:09.584931334 +0100
+@@ -0,0 +1,100 @@
 +CONFIG_ARM=y
 +CONFIG_ARCH_AT91=y
 +CONFIG_SYS_TEXT_BASE=0x23f00000
@@ -42,6 +42,8 @@ diff -Naurw ./configs/sama5d27_hd96_mmc1_defconfig ../git.new/configs/sama5d27_h
 +CONFIG_CMD_PING=y
 +CONFIG_CMD_EXT4=y
 +CONFIG_CMD_FAT=y
++CONFIG_CMD_GPIO=y
++CONFIG_AT91_GPIO=y
 +CONFIG_OF_CONTROL=y
 +CONFIG_SPL_OF_CONTROL=y
 +CONFIG_DEFAULT_DEVICE_TREE="at91-sama5d27_som1_ek"

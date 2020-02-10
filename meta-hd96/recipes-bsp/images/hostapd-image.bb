@@ -9,8 +9,8 @@ MACHINE_EXTRA_RRECOMMENDS += "kernel-modules"
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
-    packagegroup-base-wifi \
     packagegroup-core-buildessential \
+    packagegroup-base-wifi \
     kernel-modules \
     chkconfig \
     kmod \
@@ -50,9 +50,8 @@ IMAGE_INSTALL = "\
     python3-evdev \
     boost \
     boost-dev \
-    connman \
-    connman-client \
-    connman-tools \
+    hostapd \
+    iptables \
     cronie \
     lighttpd \
     lighttpd-module-fastcgi \
@@ -60,6 +59,12 @@ IMAGE_INSTALL = "\
     docker-ce \
     python3-docker-compose \
     corelockr corelockr-dev \
+    ubus \
+    rpcd \
+    lsb \
+    ppp \
+    minicom \
+    nano \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
 
